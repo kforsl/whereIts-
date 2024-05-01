@@ -5,7 +5,7 @@ import PageIndicator from '../components/PageIndicator'
 
 export default function HomePage() {
     return (
-        <Container style={{ textShadow: '1px 1px black', justifyContent: 'center' }}>
+        <Container style={{ textShadow: '1px 1px black', justifyContent: 'center', paddingTop: '50%' }}>
             <Link to="/events">
                 <img src="../src/assets/logo.svg" alt="logo for Where it's @" />
             </Link>

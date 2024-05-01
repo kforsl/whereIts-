@@ -1,3 +1,4 @@
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import GlobalStyles from "./components/styles/Global";
@@ -8,12 +9,22 @@ import EventPage from './pages/EventPage';
 import OrderPage from './pages/OrderPage';
 import SingleEventPage from './pages/SingleEventPage';
 import TicketPage from './pages/TicketPage';
+import { useEffect } from "react";
+import { useEventStore } from "./store";
 
 
 function App() {
 
-    const theme = {
+    const { addEventItem, getEvents } = useEventStore((state) => (({
+        addEventItem: state.addEventItem,
+        getEvents: state.getEvents,
+    })))
 
+    useEffect(() => {
+        getEvents(addEventItem)
+    }, [])
+
+    const theme = {
         colors: {
             bg: 'rgb(35, 31, 66)',
             white: 'rgb(255, 255, 255)',
@@ -21,14 +32,11 @@ function App() {
             accentPink: 'rgb(245, 107, 154)',
             black: 'rgb(0,0,0)'
         },
-
         fonts: {
             sansita: 'Sansita One',
             fira: '"Fira Sans", sans-serif',
             barCode: '"Libre Barcode 128", system-ui',
-        }
-
-        // padding left 32px / 2rem top 34px 
+        },
     }
 
     return (

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const StyledPageIndicator = styled.section`
-    position: absolute; 
-    bottom: 1.25rem;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     align-items: center;
+    justify-content: center; 
     gap: .75rem;
+    margin-top: auto; 
+    margin-bottom: 0; 
 
     div {
         background-color: rgba(255,255,255,.3);

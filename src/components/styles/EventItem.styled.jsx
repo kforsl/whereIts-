@@ -11,8 +11,8 @@ export const StyledEventItem = styled.article`
     section:first-of-type {
         border: 1px solid ${({ theme }) => theme.colors.white};
         color: ${({ theme }) => theme.colors.white}; 
-        aspect-ratio: 1;
-        padding:1rem 1.25rem;
+        min-width: 59px; 
+        padding: 1rem 1.25rem;
         
         text-align: center;
         font-size: 14px; 
@@ -25,7 +25,6 @@ export const StyledEventItem = styled.article`
         display: block;
         font-size: 10px; 
         line-height: 12px;
-
     }
 
     section:last-of-type {
@@ -39,6 +38,7 @@ export const StyledEventItem = styled.article`
     div {
         display: flex; 
         flex-direction: column; 
+        text-align: start;
         gap: .25rem;
     }
 

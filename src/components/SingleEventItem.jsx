@@ -2,14 +2,26 @@ import React from 'react'
 import { StyledSingleEventItem } from './styles/SingleEventItem.styled'
 import CartItem from '../components/CartItem'
 
-export default function SingleEventItem() {
+export default function SingleEventItem({ thisEvent }) {
+
     return (
         <StyledSingleEventItem>
-            <h2> Lasse-Stefanz </h2>
-            <h3> 21 mars kl 19.00 - 21.00 </h3>
-            <h4> @ Kjell Härnqvistsalen </h4>
+            {
+                thisEvent && thisEvent.when && <>
+                    <h2> {thisEvent.name}</h2>
+                    <h3>{`
+                        ${thisEvent.when.date}
+                        kl
+                        ${thisEvent.when.from}
+                        -
+                        ${thisEvent.when.to}`}
+                    </h3>
+                    <h4> {thisEvent.where} </h4>
 
-            <CartItem price='350' />
+                    <CartItem thisEvent={thisEvent} price={thisEvent.price} inCart={thisEvent.inCart} />
+                </>
+            }
+
 
         </StyledSingleEventItem>
     )
