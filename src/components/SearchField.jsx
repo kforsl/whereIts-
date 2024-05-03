@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyledSearchField } from './styles/SearchField.styled'
+
+// Icons 
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function SearchField() {
@@ -8,10 +10,8 @@ export default function SearchField() {
         <StyledSearchField>
             <button>
                 <FaMagnifyingGlass
-                    style={{
-                        width: '20px',
-                        height: '20px'
-                    }} />
+                    size={'20px'}
+                />
             </button>
             <input type="text" />
         </StyledSearchField>

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const StyledCartItem = styled.section`
-width: 100%;
+    width: 100%;
     border: solid 2px ${({ theme }) => theme.colors.accentPink};
     padding-top: 1rem;
     border-radius: 3px;

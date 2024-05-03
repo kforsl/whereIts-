@@ -1,51 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { StyledCartItem } from './styles/CartItem.styled'
-import { FaPlus } from "react-icons/fa";
-import { FaMinus } from "react-icons/fa";
 import { useCartStore } from '../store';
 
-export default function CartItem({ thisEvent = null, price = 0, inCart = 0 }) {
+// Icons 
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
-    const [isOrderPage, setIsOrderPage] = useState(false)
-    const [currentEvent, setCurrentEvent] = useState({})
-
+export default function CartItem({ thisEvent }) {
     const { cart, removeFromCart, addToCart } = useCartStore((state) => ({
         cart: state.cart,
         removeFromCart: state.removeFromCart,
         addToCart: state.addToCart,
     }))
 
+    const [isOrderPage, setIsOrderPage] = useState(false)
+
     useEffect(() => {
-        checkCurrentPage()
-        handleCurrentEvent()
+        setIsOrderPage(location.pathname === '/order')
     }, [])
-
-    useEffect(() => {
-        handleCurrentEvent()
-    }, [cart])
-
-    const checkCurrentPage = () => {
-        setIsOrderPage(location.pathname === '/order');
-    }
-
-    const handleCurrentEvent = () => {
-        if (!thisEvent.inCart) { thisEvent.inCart = 0 }
-        setCurrentEvent(thisEvent)
-    }
 
     return (
         <StyledCartItem>
             {
                 !isOrderPage ?
-                    <h6> {currentEvent.price * currentEvent.inCart} </h6>
+                    thisEvent.inCart ? <h6> {thisEvent.price * thisEvent.inCart} </h6> : <h6> 0 </h6>
                     : <>
-                        <h4> {currentEvent.name} </h4>
+                        <h4> {thisEvent.name} </h4>
                         <h5> {`
-                                ${currentEvent.when.date}
+                                ${thisEvent.when.date}
                                 kl
-                                ${currentEvent.when.from}
+                                ${thisEvent.when.from}
                                 -
-                                ${currentEvent.when.to}
+                                ${thisEvent.when.to}
                             `}
                         </h5>
                     </>
@@ -53,18 +39,16 @@ export default function CartItem({ thisEvent = null, price = 0, inCart = 0 }) {
 
             <div>
                 <button
-                    onClick={() =>
-                        removeFromCart(currentEvent, cart)
+                    onClick={() => removeFromCart(thisEvent, cart)
                     }>
                     <FaMinus
                         color='white'
                         size='20px'
                     />
                 </button>
-                <p> {currentEvent.inCart} </p>
+                {thisEvent.inCart ? <p> {thisEvent.inCart} </p> : <p> 0 </p>}
                 <button
-                    onClick={() =>
-                        addToCart(currentEvent, cart)
+                    onClick={() => addToCart(thisEvent, cart)
                     }>
                     <FaPlus
                         color='white'

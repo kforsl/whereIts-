@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { StyledEventItem } from './styles/EventItem.styled'
 import { Link } from 'react-router-dom';
+import { StyledEventItem } from './styles/EventItem.styled'
 
 export default function EventItem({ event }) {
 
@@ -14,11 +14,11 @@ export default function EventItem({ event }) {
     const splitDate = () => {
         const splitSting = event.when.date.split(' ')
         setDay(splitSting[0])
-        setMonth(splitSting[1].substring(0, 3))
+        setMonth(splitSting[1].substring(0, 3).toUpperCase())
     }
 
     return (
-        <Link to={`/events/${event.name}`} style={{ width: '100%', textDecoration: 'none' }}>
+        <Link to={`/events/${event.id}`} style={{ width: '100%', textDecoration: 'none' }}>
             <StyledEventItem>
                 <section>
                     <p>

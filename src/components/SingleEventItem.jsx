@@ -1,28 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyledSingleEventItem } from './styles/SingleEventItem.styled'
+import { useCartStore } from '../store'
+
+// Components
 import CartItem from '../components/CartItem'
 
 export default function SingleEventItem({ thisEvent }) {
 
+    const [currentEvent, setCurrentEvent] = useState({})
+    const { cart } = useCartStore((state) => ({ cart: state.cart }))
+
+    useEffect(() => {
+        setCurrentEvent(thisEvent)
+    }, [thisEvent])
+
+    useEffect(() => {
+        cart.map((item) => {
+            if (item.id === thisEvent.id) {
+                setCurrentEvent(item)
+            }
+        })
+    }, [currentEvent])
+
     return (
         <StyledSingleEventItem>
             {
-                thisEvent && thisEvent.when && <>
-                    <h2> {thisEvent.name}</h2>
+                currentEvent && currentEvent.when && <>
+                    <h2> {currentEvent.name}</h2>
                     <h3>{`
-                        ${thisEvent.when.date}
+                        ${currentEvent.when.date}
                         kl
-                        ${thisEvent.when.from}
+                        ${currentEvent.when.from}
                         -
-                        ${thisEvent.when.to}`}
+                        ${currentEvent.when.to}`}
                     </h3>
-                    <h4> {thisEvent.where} </h4>
-
-                    <CartItem thisEvent={thisEvent} price={thisEvent.price} inCart={thisEvent.inCart} />
+                    <h4> {currentEvent.where} </h4>
+                    <CartItem thisEvent={currentEvent} />
                 </>
             }
-
-
         </StyledSingleEventItem>
     )
 }

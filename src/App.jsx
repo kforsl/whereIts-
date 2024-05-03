@@ -1,6 +1,10 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useEventStore } from "./store";
+
+// Components 
 import GlobalStyles from "./components/styles/Global";
 
 // Pages
@@ -9,19 +13,13 @@ import EventPage from './pages/EventPage';
 import OrderPage from './pages/OrderPage';
 import SingleEventPage from './pages/SingleEventPage';
 import TicketPage from './pages/TicketPage';
-import { useEffect } from "react";
-import { useEventStore } from "./store";
-
 
 function App() {
 
-    const { addEventItem, getEvents } = useEventStore((state) => (({
-        addEventItem: state.addEventItem,
-        getEvents: state.getEvents,
-    })))
+    const getEvents = useEventStore((state) => state.getEvents)
 
     useEffect(() => {
-        getEvents(addEventItem)
+        getEvents()
     }, [])
 
     const theme = {
@@ -48,7 +46,6 @@ function App() {
                 <Route path="/events/:id" element={<SingleEventPage />} />
                 <Route path="/order" element={<OrderPage />} />
                 <Route path="/tickets" element={<TicketPage />} />
-
             </Routes>
         </ThemeProvider>
     )

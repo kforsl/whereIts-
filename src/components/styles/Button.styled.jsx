@@ -9,5 +9,7 @@ export const StyledButton = styled.button`
     border: none;
     font-size: 1.37rem;
     font-weight: 600;
-    font-family: ${({ theme }) => theme.fonts.fira}
+    font-family: ${({ theme }) => theme.fonts.fira};
+    margin-bottom: 1rem;
+
 `

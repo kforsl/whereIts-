@@ -1,47 +1,59 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyledTicketCard } from './styles/TicketCard.styled'
 
-export default function TicketCard() {
+export default function TicketCard({ orderItem }) {
+
+    const [day, setDay] = useState('')
+    const [month, setMonth] = useState('')
+
+    useEffect(() => {
+        splitDate()
+    }, [orderItem])
+
+    const splitDate = () => {
+        const splitSting = orderItem.when.date.split(' ')
+        setDay(splitSting[0])
+        setMonth(splitSting[1].substring(0, 3))
+    }
+
     return (
         <StyledTicketCard>
             <section>
                 <p>WHAT</p>
-                <h1> Lasse-Stefanz</h1>
+                <h1> {orderItem.name}</h1>
             </section>
 
             <section>
                 <p>WHERE</p>
-                <h2>Kjell Härnqvistsalen</h2>
-                <h3>Göteborgs univeristet, Pedagogen, hus A</h3>
+                <h2>{orderItem.where}</h2>
             </section>
 
             <section>
                 <div>
                     <p>WHEN</p>
-                    <h4>21 Mar</h4>
+                    <h4>{`${day} ${month}`}</h4>
                 </div>
 
                 <div>
                     <p>FROM</p>
-                    <h4>19.00</h4>
+                    <h4>{orderItem.when.from}</h4>
                 </div>
                 <div>
                     <p>To</p>
-                    <h4>21.00</h4>
+                    <h4>{orderItem.when.to}</h4>
                 </div>
             </section>
 
             <section>
                 <p>INFO</p>
-                <h5> Section C - Seat 233, bring umbrella </h5>
+                {orderItem.section && <h5>{`Section ${orderItem.section} - Seat ${orderItem.seat}`}</h5>}
             </section>
 
             <section>
-                <h6>
-                    #A2ED7
-                    <span>#A2ED7</span>
-                </h6>
-
+                {orderItem.ticketNmbr && <h6>
+                    {orderItem.ticketNmbr}
+                    <span>#{orderItem.ticketNmbr}</span>
+                </h6>}
             </section>
         </StyledTicketCard >
     )

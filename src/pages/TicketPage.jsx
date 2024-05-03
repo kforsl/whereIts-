@@ -1,11 +1,34 @@
 import React from 'react'
+import { useCartStore } from '../store'
+
+// Components 
 import { Container } from '../components/styles/Container.styled'
-import TicketCard from '../components/TicketCard'
+import PageIndicator from '../components/PageIndicator'
+import TicketCardContainer from '../components/TicketCardContainer'
+import Fade from '../components/Fade'
+import ErrorMsg from '../components/ErrorMsg'
 
 export default function TicketPage() {
+
+    const order = useCartStore((state) => state.order)
+
     return (
-        <Container style={{ background: 'linear-gradient(180deg, #F56B9A 0%, rgba(177, 52, 254, 0) 30%)', justifyContent: 'center' }}>
-            <TicketCard />
-        </Container>
+        <>
+            <Fade />
+            <Container style={{ display: 'block' }}>
+                {order.length > 0 ?
+                    <>
+                        {
+                            order.map((orderItem, index) => {
+                                return <TicketCardContainer key={index} orderItem={orderItem} />
+                            })
+                        }
+                    </>
+                    :
+                    <ErrorMsg value={'Tyvärr du har inga köpta biljetter'} />
+                }
+            </Container>
+            <PageIndicator />
+        </>
     )
 }

@@ -9,18 +9,18 @@ import { useEventStore } from '../store'
 export default function SingleEventPage() {
 
     const eventItems = useEventStore((state) => state.eventItems)
-
     const { id } = useParams();
     const [thisEvent, setThisEvent] = useState({})
-
-    const handleThisEvent = () => {
-        const filterdEvent = eventItems.filter((eventItem) => eventItem.name === id)
-        setThisEvent(...filterdEvent)
-    }
 
     useEffect(() => {
         handleThisEvent()
     }, [id, eventItems])
+
+    const handleThisEvent = () => {
+        const filterdEvent = eventItems.find((eventItem) => eventItem.id === id)
+        console.log(filterdEvent);
+        setThisEvent(structuredClone(filterdEvent))
+    }
 
     return (
         <Container>
@@ -31,13 +31,14 @@ export default function SingleEventPage() {
                     color: 'rgba(255,255,255,.8)',
                     fontSize: '19px',
                     margin: '0 auto',
-                    padding: '0 4rem'
+                    padding: '0 3.5rem'
                 }}>
                     You are about to score some tickets to
                 </h2>
             </div>
             <SingleEventItem thisEvent={thisEvent} />
-            <Button value='Lägg i Varukorgen' path='/order' />
+
+            <Button value='Till varukorgen' path='/order' />
 
         </Container>
     )

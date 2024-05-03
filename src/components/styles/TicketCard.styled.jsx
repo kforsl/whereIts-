@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const StyledTicketCard = styled.article`
-    width: 100%;
+    min-width: 100%;
     background-color: ${({ theme }) => theme.colors.white};
     border-radius: 3px;
+    text-align: start;
     
     section:nth-of-type(1) {
         border-bottom: dotted 1px rgba(0,0,0,.4);
@@ -68,6 +69,7 @@ export const StyledTicketCard = styled.article`
     h4 {
         font-size: 18px;
         line-height: 21.6px; 
+        text-align: start;
     }
 
     h5 {
@@ -106,6 +108,7 @@ export const StyledTicketCard = styled.article`
         font-size: 10px;
         line-height: 12px;
         padding: .5rem 1rem;
+        text-align: start;
     }
 
 `

@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { StyledCart } from './styles/Cart.styled'
-import CartItem from './CartItem';
 import { useCartStore } from '../store';
 
-export default function Cart() {
+// Component 
+import CartItem from './CartItem';
+import ErrorMsg from './ErrorMsg';
 
+export default function Cart() {
     const cart = useCartStore((state) => state.cart)
     const [totalPrice, setTotalPrice] = useState(0)
+
+    useEffect(() => {
+        handleTotalPrice()
+    }, [cart])
 
     const handleTotalPrice = () => {
         let price = 0
         cart.map((item) => {
             price += item.price * item.inCart
         })
-
         setTotalPrice(price)
     }
-
-    useEffect(() => {
-        handleTotalPrice()
-    }, [cart])
 
     return (
         <StyledCart>
             {
-                cart.map((item) => {
-                    return <CartItem thisEvent={item} key={item.name} />
-                })
+                cart.length > 0 ?
+                    cart.map((item) => {
+                        return <CartItem thisEvent={item} key={item.id} />
+                    })
+                    :
+                    <ErrorMsg value={'Inget i varukorgen'} />
             }
             <div>
                 <h2 style={{

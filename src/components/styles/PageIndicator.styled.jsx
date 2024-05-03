@@ -5,13 +5,13 @@ export const StyledPageIndicator = styled.section`
     align-items: center;
     justify-content: center; 
     gap: .75rem;
-    margin-top: auto; 
-    margin-bottom: 0; 
-
-    div {
-        background-color: rgba(255,255,255,.3);
-        border-radius: 50%;
-        height: .5rem;
-        width: .5rem;
-    }
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0 1.5rem;
+    background-color: ${({ theme }) => theme.colors.bg};
+    box-shadow: 0 0 .4rem .4rem rgba(35, 31, 66, 1); 
 `
+
+// rgba(35, 31, 66, .5)
