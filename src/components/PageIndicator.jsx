@@ -15,9 +15,9 @@ export default function PageIndicator() {
     const checkActivePage = () => {
         const currentPath = location.pathname
         const newPages = [
-            { path: '/', isActive: false },
-            { path: '/events', isActive: false },
-            { path: '/tickets', isActive: false }
+            { path: '/', isActive: false, value: 'Home' },
+            { path: '/events', isActive: false, value: 'Events' },
+            { path: '/tickets', isActive: false, value: 'Tickets' }
         ]
         for (let i = 0; i < newPages.length; i++) {
             if (newPages[i].path === currentPath) {
@@ -32,8 +32,8 @@ export default function PageIndicator() {
             {
                 pages.map((item) => {
                     return (
-                        <Link to={item.path} key={item.path}>
-                            <IndicatorDot isActive={item.isActive} />
+                        <Link to={item.path} key={item.path} style={{ textDecoration: 'none' }}>
+                            <IndicatorDot isActive={item.isActive} value={item.value} />
                         </Link>
                     )
                 })

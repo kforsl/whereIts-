@@ -14,9 +14,9 @@ export const StyledSearchField = styled.form`
     }
 
     input[type='text'] {
-        padding-left: .25rem;
         width: 100%;
         color: rgba(255,255,255, .8);
+        padding: .75rem;
     }
 
     button {

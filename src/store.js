@@ -85,3 +85,9 @@ const generateTicketNmbr = () => {
     }
     return ticketNmbr
 }
+
+export const splitDate = (setDay, setMonth, orderItem) => {
+    const splitSting = orderItem.when.date.split(' ')
+    setDay(splitSting[0])
+    setMonth(splitSting[1].substring(0, 3))
+}

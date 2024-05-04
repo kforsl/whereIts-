@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledSingleEventItem = styled.article`
 text-align: center;
-margin: auto 2rem; 
+margin: 2rem; 
 
 h2 {
     color: ${({ theme }) => theme.colors.accentPink};
@@ -25,6 +25,6 @@ h4 {
     font-size: 1rem;
     line-height: 19.2px;
     color: rgba(255,255,255,.7); 
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 `

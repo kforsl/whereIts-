@@ -25,10 +25,8 @@ function App() {
     const theme = {
         colors: {
             bg: 'rgb(35, 31, 66)',
-            white: 'rgb(255, 255, 255)',
             accentBlue: 'rgb(55, 164, 171)',
             accentPink: 'rgb(245, 107, 154)',
-            black: 'rgb(0,0,0)'
         },
         fonts: {
             sansita: 'Sansita One',

@@ -8,12 +8,12 @@ export default function SearchField() {
 
     return (
         <StyledSearchField>
-            <button>
+            <button aria-label='search button for event search'>
                 <FaMagnifyingGlass
                     size={'20px'}
                 />
             </button>
-            <input type="text" />
+            <input type="text" aria-label='search bar for event search' />
         </StyledSearchField>
     )
 }

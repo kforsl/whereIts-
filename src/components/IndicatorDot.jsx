@@ -1,16 +1,16 @@
 import React from 'react'
 import { StyledIndicatorDot } from './styles/IndicatorDot.styled'
 
-export default function IndicatorDot({ isActive }) {
+export default function IndicatorDot({ isActive, value }) {
     return (
         <>
             {
                 isActive ?
                     <StyledIndicatorDot
-                        style={{ backgroundColor: 'rgba(255,255,255,1)' }}
-                    ></StyledIndicatorDot >
+                        style={{ color: 'rgba(255,255,255,1)' }}
+                    > {value} </StyledIndicatorDot >
                     :
-                    <StyledIndicatorDot></StyledIndicatorDot >
+                    <StyledIndicatorDot> {value} </StyledIndicatorDot >
             }
         </>
     )

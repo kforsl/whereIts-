@@ -1,8 +1,11 @@
 import React from 'react'
+import { useCartStore } from '../store'
 import { Container } from '../components/styles/Container.styled'
+
+// components 
 import Button from '../components/Button'
 import Cart from '../components/Cart'
-import { useCartStore } from '../store'
+import BackBtn from '../components/BackBtn'
 
 export default function OrderPage() {
 
@@ -12,10 +15,13 @@ export default function OrderPage() {
     }))
 
     return (
-        <Container>
-            <h1>Order</h1>
-            <Cart />
-            <Button value='Skicka order' path='/tickets' click={() => createOrder(cart)} />
-        </Container>
+        <>
+            <BackBtn />
+            <Container>
+                <h1>Order</h1>
+                <Cart />
+                <Button value='Skicka order' path='/tickets' click={() => createOrder(cart)} />
+            </Container>
+        </>
     )
 }

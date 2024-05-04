@@ -1,43 +1,59 @@
 import React, { useEffect, useState } from 'react'
 import { StyledSingleEventItem } from './styles/SingleEventItem.styled'
 import { useCartStore } from '../store'
+import { useParams } from 'react-router-dom'
+import { useEventStore } from '../store'
 
 // Components
 import CartItem from '../components/CartItem'
+import Button from './Button'
+import BackBtn from './BackBtn'
 
-export default function SingleEventItem({ thisEvent }) {
+export default function SingleEventItem() {
 
-    const [currentEvent, setCurrentEvent] = useState({})
+    const eventItems = useEventStore((state) => state.eventItems)
     const { cart } = useCartStore((state) => ({ cart: state.cart }))
+    const { id } = useParams();
+    const [thisEvent, setThisEvent] = useState({})
 
     useEffect(() => {
-        setCurrentEvent(thisEvent)
-    }, [thisEvent])
+        handleThisEvent()
+    }, [id, eventItems])
 
     useEffect(() => {
         cart.map((item) => {
             if (item.id === thisEvent.id) {
-                setCurrentEvent(item)
+                setThisEvent(item)
             }
         })
-    }, [currentEvent])
+    }, [thisEvent])
+
+    const handleThisEvent = () => {
+        const filterdEvent = eventItems.find((eventItem) => eventItem.id === id)
+        setThisEvent(structuredClone(filterdEvent))
+    }
 
     return (
-        <StyledSingleEventItem>
-            {
-                currentEvent && currentEvent.when && <>
-                    <h2> {currentEvent.name}</h2>
-                    <h3>{`
-                        ${currentEvent.when.date}
+        <>
+            <BackBtn />
+            <StyledSingleEventItem>
+                {
+                    thisEvent && thisEvent.when && <>
+                        <h2> {thisEvent.name}</h2>
+                        <h3>{`
+                        ${thisEvent.when.date}
                         kl
-                        ${currentEvent.when.from}
+                        ${thisEvent.when.from}
                         -
-                        ${currentEvent.when.to}`}
-                    </h3>
-                    <h4> {currentEvent.where} </h4>
-                    <CartItem thisEvent={currentEvent} />
-                </>
-            }
-        </StyledSingleEventItem>
+                        ${thisEvent.when.to}`}
+                        </h3>
+                        <h4> {thisEvent.where} </h4>
+                        <CartItem thisEvent={thisEvent} />
+                    </>
+                }
+            </StyledSingleEventItem>
+
+            {thisEvent && thisEvent.inCart > 0 && <Button value='Till varukorgen' path='/order' />}
+        </>
     )
 }

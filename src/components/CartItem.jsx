@@ -27,11 +27,11 @@ export default function CartItem({ thisEvent }) {
                     : <>
                         <h4> {thisEvent.name} </h4>
                         <h5> {`
-                                ${thisEvent.when.date}
-                                kl
-                                ${thisEvent.when.from}
-                                -
-                                ${thisEvent.when.to}
+                            ${thisEvent.when.date}
+                            kl
+                            ${thisEvent.when.from}
+                            -
+                            ${thisEvent.when.to}
                             `}
                         </h5>
                     </>
@@ -39,6 +39,7 @@ export default function CartItem({ thisEvent }) {
 
             <div>
                 <button
+                    aria-label={`Remove from cart button`}
                     onClick={() => removeFromCart(thisEvent, cart)
                     }>
                     <FaMinus
@@ -48,6 +49,7 @@ export default function CartItem({ thisEvent }) {
                 </button>
                 {thisEvent.inCart ? <p> {thisEvent.inCart} </p> : <p> 0 </p>}
                 <button
+                    aria-label={`Add to cart button`}
                     onClick={() => addToCart(thisEvent, cart)
                     }>
                     <FaPlus

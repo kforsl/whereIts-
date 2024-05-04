@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledTicketCard = styled.article`
     min-width: 100%;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: rgb(255,255,255);
     border-radius: 3px;
     text-align: start;
     
@@ -26,7 +26,7 @@ export const StyledTicketCard = styled.article`
     }
     section:nth-of-type(5) {
         padding: 2rem;
-        padding-bottom: 0;
+        padding-bottom: .5rem;
         background: rgba(0, 0, 0, 0.12);
     }
 
