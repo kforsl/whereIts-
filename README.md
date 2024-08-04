@@ -1,4 +1,4 @@
-# Indivuduell Examination Frontendramverk - Where It's @
+# Individuell Examination Frontendramverk - Where It's @
 
 ![screen](./screen.png)
 
