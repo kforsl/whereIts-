@@ -53,7 +53,7 @@ export default function SingleEventItem() {
                 }
             </StyledSingleEventItem>
 
-            {thisEvent && thisEvent.inCart > 0 && <Button value='Till varukorgen' path='/order' />}
+            {thisEvent && thisEvent.inCart > 0 && <Button value='Till varukorgen' path='/whereItsAt/order' />}
         </>
     )
 }

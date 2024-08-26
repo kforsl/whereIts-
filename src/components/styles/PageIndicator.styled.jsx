@@ -11,4 +11,8 @@ export const StyledPageIndicator = styled.section`
     background-color: ${({ theme }) => theme.colors.bg};
     box-shadow: 0 0 .4rem .4rem rgba(35, 31, 66, 1); 
     padding-bottom: .25rem;
+
+    @media (min-width: 400px) {
+    justify-content: center;
+  }
 `

@@ -8,7 +8,7 @@ export default function SearchField() {
 
     return (
         <StyledSearchField>
-            <button aria-label='search button for event search'>
+            <button type="button" onClick={(e)=> {e.preventDefault()}} aria-label='search button for event search'>
                 <FaMagnifyingGlass
                     size={'20px'}
                 />

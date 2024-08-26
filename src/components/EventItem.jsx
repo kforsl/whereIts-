@@ -13,7 +13,7 @@ export default function EventItem({ event }) {
     }, [event])
 
     return (
-        <Link to={`/events/${event.id}`} style={{ width: '100%', textDecoration: 'none' }}>
+        <Link to={`/whereItsAt/events/${event.id}`} style={{ width: '100%', textDecoration: 'none' }}>
             <StyledEventItem>
                 <section>
                     <p>

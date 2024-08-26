@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from '../components/styles/Container.styled'
+import logo from "../assets/logo.svg"
 
 // Components 
 import PageIndicator from '../components/PageIndicator'
@@ -12,14 +13,14 @@ export default function HomePage() {
                 justifyContent: 'center',
             }}>
                 <section>
-                    <img src="../src/assets/logo.svg" alt="logo for Where it's @" />
+                    <img src={logo} alt="logo for Where it's @" />
                     <h1 > Where It's @ </h1>
                     <h2> Ticketsing made easy </h2>
                 </section>
 
-
+                <PageIndicator />
             </Container>
-            <PageIndicator />
+            
         </>
     )
 }

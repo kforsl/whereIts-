@@ -24,9 +24,10 @@ export default function EventPage() {
                         })
                     }
                 </section>
-                <Button value='Till varukorg' path='/order' />
+                <Button value='Till varukorg' path='/whereItsAt/order' />
+                <PageIndicator />
             </Container>
-            <PageIndicator />
+            
         </>
     )
 }

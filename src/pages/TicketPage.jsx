@@ -27,8 +27,9 @@ export default function TicketPage() {
                     :
                     <ErrorMsg value={'Tyvärr du har inga köpta biljetter'} />
                 }
+                 <PageIndicator />
             </Container>
-            <PageIndicator />
+           
         </>
     )
 }

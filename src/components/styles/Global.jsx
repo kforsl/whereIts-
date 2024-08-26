@@ -4,12 +4,12 @@ const GlobalStyles = createGlobalStyle`
 
 @font-face {
     font-family: "Sansita One";
-    src: url('../src/assets/font/sansitaOne/SansitaOne.ttf')
+    src: url('./font/sansitaOne/SansitaOne.ttf')
 }
 
 @font-face {
     font-family: "Libre Barcode 128";
-    src: url('../src/assets/font/libreBarcode/LibreBarcode128-Regular.ttf')
+    src: url('./font/libreBarcode/LibreBarcode128-Regular.ttf')
 }
 
 * {

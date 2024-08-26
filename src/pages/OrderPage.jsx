@@ -20,7 +20,7 @@ export default function OrderPage() {
             <Container>
                 <h1>Order</h1>
                 <Cart />
-                <Button value='Skicka order' path='/tickets' click={() => createOrder(cart)} />
+                <Button value='Skicka order' path='/whereItsAt/tickets' click={() => createOrder(cart)} />
             </Container>
         </>
     )
